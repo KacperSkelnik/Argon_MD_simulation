@@ -34,7 +34,7 @@ def sim(n, structure, momentum, m, f_par, S0, Sd, R, epsilon, S_xyz, S_out, L, t
     r = structure
     p = momentum
     
-    with open('wyniki/topnienie/86K_ovito/sim.atom', 'w+') as f, open('wyniki/topnienie/86K_ovito/sim.dat', 'w+') as f2:
+    with open('wyniki/topnienie/86K/sim.atom', 'w+') as f, open('wyniki/topnienie/86K/sim.dat', 'w+') as f2:
         f2.write('t' + '\t' + 'H' + '\t' + 'H_avr' + '\t' + 'V' + '\t' + 'E_kin' + '\t' + 'T' + '\t' + 'T_avr' + '\t' + 'P' + '\t' + 'P_avr' + '\n')
             
         calc_products = calc(R, epsilon, structure, f_par, n, L)
@@ -60,7 +60,7 @@ def sim(n, structure, momentum, m, f_par, S0, Sd, R, epsilon, S_xyz, S_out, L, t
                 H_avr = H_cul/(i-S0)
             
             if i%S_xyz == 0:
-                
+                """
                 f.write('ITEM: TIMESTEP \n')
                 f.write(str(i) + '\n')
                 f.write('ITEM: NUMBER OF ATOMS \n')
@@ -86,7 +86,7 @@ def sim(n, structure, momentum, m, f_par, S0, Sd, R, epsilon, S_xyz, S_out, L, t
                         f.write(str(r[k][j]))
                         f.write(' ')
                     f.write('\n')    
-                """
+
             if i%S_out == 0:    
                 f2.write("{:.3f}".format(i*tau) + '\t')
                 f2.write("{:.6E}".format(Decimal(H)) + '\t')
